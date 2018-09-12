@@ -1,0 +1,126 @@
+# Identity and access parameters
+tenancy_ocid = "ocidv1:tenancy:oc1:phx:1458169512456:aaaaaaaaqftfib54gijpqwckj3uvudp234"
+
+user_ocid = "ocid1.user.oc1..aaaaaaaauw27vex74ohsqiqlrvfti7hvyzrsjr7mdask4dvzh5druod6bp2q"
+
+compartment_ocid = "ocid1.compartment.oc1..aaaaaaaa7el6uxvuyatge6nnsbox6ufirjeyecxvrlgflxmm4no5is55o6ua"
+
+fingerprint = "7c:a3:ff:3f:b7:f8:bb:e1:44:11:4b:d0:8d:a4:11:b7"
+
+region = "us-phoenix-1"
+
+export TF_VAR_private_key=$(cat ~/.oci/oci_api_key.pem)
+export TF_VAR_public_key=$(cat ~/.ssh/id_rsa.pub)
+
+# networking
+
+vcn_dns_name = "ocioke"
+
+vcn_cidr = "10.0.0.0/16"
+
+vcn_name = "oke vcn"
+
+# new mask for the subnet within the virtual network. use as newbits parameter for cidrsubnet function
+newbits = 8
+
+subnets = {
+  "nat_ad1"     = "11"
+  "nat_ad2"     = "21"
+  "nat_ad3"     = "31"
+  "lb_ad1"      = "12"
+  "lb_ad2"      = "22"
+  "lb_ad3"      = "32"
+  "workers_ad1" = "13"
+  "workers_ad2" = "23"
+  "workers_ad3" = "33"
+}
+
+# compute
+
+nat_shape = "VM.Standard1.4"
+
+#storage
+
+# ha
+
+ha = {
+  "nat_ad1"     = "false"
+  "nat_ad2"     = "false"
+  "nat_ad3"     = "false"
+  "lb_ad1"      = "true"
+  "lb_ad2"      = "true"
+  "lb_ad3"      = "false"
+  "workers_ad1" = "true"
+  "workers_ad2" = "true"
+  "workers_ad3" = "true"
+}
+
+# oke
+
+kubernetes_version = "v1.10.3"
+
+cluster_name = "testoke"
+
+dashboard_enabled = "true"
+
+tiller_enabled = "true"
+
+pods_cidr = "10.244.0.0/16"
+
+services_cidr = "10.96.0.0/16"
+
+node_pool_name_prefix = "np"
+
+node_pool_node_image_name = "Oracle-Linux-7.4"
+
+node_pool_node_shape = "VM.Standard1.4"
+
+node_pool_quantity_per_subnet = "2"
+
+# maximum of node_pools = 3
+node_pools = "1" 
+
+nodepool_topology = "3"
+
+# helm
+
+install_helm = "true"
+
+helm_version= "2.9.1"
+
+# istio
+# If you want istio installed, set install_helm to true.
+install_istio = "true"
+
+istio_version = "1.0.0"
+
+# this will create a separate load balancer. Leave to false unless you know what you're doing.
+ingress_enabled = "false"
+
+tracing_enabled = "true"
+
+grafana_enabled = "true"
+
+servicegraph_enabled = "true"
+
+gateways_istio_ingressgateway_enabled  = "true"
+
+gateways_istio_egressgateway_enabled = "true"
+
+galley_enabled = "true"
+
+sidecarInjectorWebhook_enabled = "true"
+
+mixer_enabled = "true"
+
+prometheus_enabled = "true"
+
+global_proxy_envoy_statsd_enabled = "true"
+
+efk_enabled = "true"
+
+install_bookinfo_sample = "true"
+
+install_weavescope = "true"
+
+open_sesame = "true"
